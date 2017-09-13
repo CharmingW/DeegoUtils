@@ -1,11 +1,19 @@
 package com.charmingwong.deegoutils;
 
+import android.support.annotation.NonNull;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
 /**
- * Created by CharmingWong on 2016/12/10.
+ * <pre>
+ *     author: Charming Wong
+ *     github: https://github.com/CharmingW
+ *     blog  : http://www.jianshu.com/u/05686c7c92af & http://blog.csdn.net/CharmingWong
+ *     公众号 ： Charming写字的地方
+ *     time  : 2017/09/12
+ *     desc  : MD5相关工具类
+ * </pre>
  */
 
 public class MD5Utils {
@@ -16,7 +24,7 @@ public class MD5Utils {
      * @param key source string
      * @return digested string
      */
-    public static String generateHashKey(String key) {
+    public static String generateHashKey(@NonNull final String key) {
         String cacheKey;
         try {
             final MessageDigest mDigest = MessageDigest.getInstance("MD5");
@@ -46,7 +54,7 @@ public class MD5Utils {
      * @param bytes source byte array
      * @return digested string
      */
-    public static String BytesToMD5(byte[] bytes) {
+    public static String BytesToMD5(@NonNull final byte[] bytes) {
         String cacheKey;
         try {
             final MessageDigest mDigest = MessageDigest.getInstance("MD5");

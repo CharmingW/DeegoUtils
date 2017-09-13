@@ -4,11 +4,19 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.SystemClock;
+import android.support.annotation.NonNull;
 import android.view.MotionEvent;
 import android.view.View;
 
 /**
- * Created by CharmingWong on 2017/8/24
+ * <pre>
+ *     author: Charming Wong
+ *     github: https://github.com/CharmingW
+ *     blog  : http://www.jianshu.com/u/05686c7c92af & http://blog.csdn.net/CharmingWong
+ *     公众号 ： Charming写字的地方
+ *     time  : 2017/09/12
+ *     desc  : 模拟动作工具类
+ * </pre>
  */
 public class ActionUtils {
 
@@ -21,7 +29,7 @@ public class ActionUtils {
      *
      * @param context the context to start Activity
      */
-    public static void backToHome(Context context) {
+    public static void backToHome(@NonNull final Context context) {
         Intent intent = new Intent(Intent.ACTION_MAIN);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.addCategory(Intent.CATEGORY_HOME);
@@ -36,7 +44,7 @@ public class ActionUtils {
      * @param y the clicked y-coordinate
      * @param duration the duration of click
      */
-    public static void simulateClick(View view, float x, float y, long duration) {
+    public static void simulateClick(@NonNull final View view, float x, float y, long duration) {
         long downTime = SystemClock.uptimeMillis();
         MotionEvent event = MotionEvent.obtain(downTime, downTime, MotionEvent.ACTION_DOWN, x, y, 0);
         view.onTouchEvent(event);
@@ -55,7 +63,8 @@ public class ActionUtils {
      * @param endY the end y-coordinate of finger
      * @param duration the duration of scroll
      */
-    public static void simulateFingerScroll(final View view, final int startX, final int startY, final int endX, final int endY, final int duration) {
+    public static void simulateFingerScroll(@NonNull final View view, final int startX, final int startY, final int endX, final int endY, final int duration) {
+
         final long downTime = SystemClock.uptimeMillis();
         final MotionEvent event = MotionEvent.obtain(downTime, downTime, MotionEvent.ACTION_DOWN, startX, startY, 0);
         view.onTouchEvent(event);

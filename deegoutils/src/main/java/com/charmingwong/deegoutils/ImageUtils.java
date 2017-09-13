@@ -5,11 +5,19 @@ import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
+import java.io.File;
 
 /**
- * Created by CharmingWong on 17-9-12.
+ * <pre>
+ *     author: Charming Wong
+ *     github: https://github.com/CharmingW
+ *     blog  : http://www.jianshu.com/u/05686c7c92af & http://blog.csdn.net/CharmingWong
+ *     公众号 ： Charming写字的地方
+ *     time  : 2017/09/12
+ *     desc  : Image相关工具类
+ * </pre>
  */
-
 public class ImageUtils {
 
     private ImageUtils() {
@@ -23,7 +31,7 @@ public class ImageUtils {
      * @param imageFile imageFile
      * @return Uri
      */
-    public static Uri getImageExternalContentUri(Context context, java.io.File imageFile) {
+    public static Uri getImageExternalContentUri(@NonNull final Context context, @NonNull final File imageFile) {
         String filePath = imageFile.getAbsolutePath();
         Cursor cursor = context.getContentResolver().query(
             MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
@@ -56,7 +64,7 @@ public class ImageUtils {
      * @param imageFile imageFile
      * @return Uri
      */
-    public static Uri getImageInternalContentUri(Context context, java.io.File imageFile) {
+    public static Uri getImageInternalContentUri(@NonNull final Context context, @NonNull final File imageFile) {
         String filePath = imageFile.getAbsolutePath();
         Cursor cursor = context.getContentResolver().query(
             MediaStore.Images.Media.INTERNAL_CONTENT_URI,
@@ -88,7 +96,7 @@ public class ImageUtils {
      * @param url 图片url
      * @return 图片url后缀
      */
-    public static String getImageUrlSuffix(String url) {
+    public static String getImageUrlSuffix(@NonNull final String url) {
 
         if (url.endsWith(".jpg")
             || url.endsWith("jpeg")

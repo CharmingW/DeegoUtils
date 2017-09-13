@@ -5,10 +5,18 @@ import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Build.VERSION_CODES;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 
 /**
- * Created by CharmingWong on 17-9-12.
+ * <pre>
+ *     author: Charming Wong
+ *     github: https://github.com/CharmingW
+ *     blog  : http://www.jianshu.com/u/05686c7c92af & http://blog.csdn.net/CharmingWong
+ *     公众号 ： Charming写字的地方
+ *     time  : 2017/09/12
+ *     desc  : Permission相关工具类
+ * </pre>
  */
 
 public class PermissionUtils {
@@ -23,7 +31,7 @@ public class PermissionUtils {
      * @param activity activity
      * @return 是否有权限
      */
-    public static boolean isStoragePermissionGranted(Activity activity) {
+    public static boolean isStoragePermissionGranted(@NonNull final Activity activity) {
         if (Build.VERSION.SDK_INT >= VERSION_CODES.M) {
             if (activity.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 == PackageManager.PERMISSION_GRANTED) {

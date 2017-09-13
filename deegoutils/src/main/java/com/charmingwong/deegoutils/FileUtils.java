@@ -1,12 +1,20 @@
 package com.charmingwong.deegoutils;
 
+import android.support.annotation.NonNull;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /**
- * Created by CharmingWong on 2017/8/24
+ * <pre>
+ *     author: Charming Wong
+ *     github: https://github.com/CharmingW
+ *     blog  : http://www.jianshu.com/u/05686c7c92af & http://blog.csdn.net/CharmingWong
+ *     公众号 ： Charming写字的地方
+ *     time  : 2017/09/12
+ *     desc  : File相关工具类
+ * </pre>
  */
 public class FileUtils {
 
@@ -20,7 +28,7 @@ public class FileUtils {
      * @param file to construct a FileInputStream
      * @return FileInputStream
      */
-    public static FileInputStream getFileInputStream(File file) {
+    public static FileInputStream getFileInputStream(@NonNull final File file) {
         FileInputStream fis;
         try {
             fis = new FileInputStream(file);
@@ -37,7 +45,7 @@ public class FileUtils {
      * @param filePath to construct a FileInputStream
      * @return FileInputStream
      */
-    public static FileInputStream getFileInputStream(String filePath) {
+    public static FileInputStream getFileInputStream(@NonNull final String filePath) {
         FileInputStream fis;
         try {
             fis = new FileInputStream(filePath);
@@ -51,10 +59,10 @@ public class FileUtils {
     /**
      *
      *
-     * @param file
-     * @return boolean
+     * @param file 文件对象
+     * @return boolean 是否创建成功
      */
-    public static boolean createFile(File file) {
+    public static boolean createFile(@NonNull final File file) {
         File parent = file.getParentFile();
         if (!parent.exists()) {
             if (parent.mkdirs()) {

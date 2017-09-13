@@ -6,19 +6,24 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
+import android.support.annotation.NonNull;
 import android.util.Base64;
 import android.view.View;
-
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
 /**
- * Created by CharmingWong on 2016/12/10.
+ * <pre>
+ *     author: Charming Wong
+ *     github: https://github.com/CharmingW
+ *     blog  : http://www.jianshu.com/u/05686c7c92af & http://blog.csdn.net/CharmingWong
+ *     公众号 ： Charming写字的地方
+ *     time  : 2017/09/12
+ *     desc  : Bitmap相关工具类
+ * </pre>
  */
-
 public class BitmapUtils {
 
     private BitmapUtils() {
@@ -30,8 +35,7 @@ public class BitmapUtils {
      * @param bitmap The bitmap to be converted
      * @return byte array converted from the bitmap
      */
-    public static byte[] bitmapToByteArray(Bitmap bitmap) {
-        if (bitmap == null) return null;
+    public static byte[] bitmapToByteArray(@NonNull final Bitmap bitmap) {
 
         ByteArrayOutputStream baos;
 
@@ -55,8 +59,7 @@ public class BitmapUtils {
      * @param bytes this byte array to be converted
      * @return bitmap converted from the byte array
      */
-    public static Bitmap byteArrayToBitmap(byte[] bytes) {
-        if (bytes == null) return null;
+    public static Bitmap byteArrayToBitmap(@NonNull final byte[] bytes) {
 
         return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
     }
@@ -65,8 +68,7 @@ public class BitmapUtils {
      * @param bitmap The bitmap to be converted
      * @return string encoded with Base64 from the bitmap
      */
-    public static String bitmapToBase64(Bitmap bitmap) {
-        if (bitmap == null) return null;
+    public static String bitmapToBase64(@NonNull final Bitmap bitmap) {
 
         // the string to return
         String result;
@@ -81,8 +83,7 @@ public class BitmapUtils {
      * @param base64String the Base64 string to be converted
      * @return bitmap decoded with Base64 from string
      */
-    public static Bitmap base64ToBitmap(String base64String) {
-        if (TextUtils.isEmpty(base64String)) return null;
+    public static Bitmap base64ToBitmap(@NonNull final String base64String) {
 
         byte[] bytes = Base64.decode(base64String, Base64.DEFAULT);
         return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
@@ -92,8 +93,7 @@ public class BitmapUtils {
      * @param bitmap The bitmap to be converted
      * @return drawable converted from the bitmap
      */
-    public static Drawable bitmapToDrawable(Bitmap bitmap) {
-        if (bitmap == null) return null;
+    public static Drawable bitmapToDrawable(@NonNull final Bitmap bitmap) {
 
         return new BitmapDrawable(Resources.getSystem(), bitmap);
     }
@@ -102,8 +102,7 @@ public class BitmapUtils {
      * @param drawable the drawable to be converted
      * @return bitmap converted from the drawable
      */
-    public static Bitmap drawableToBitmap(Drawable drawable) {
-        if (drawable == null) return null;
+    public static Bitmap drawableToBitmap(@NonNull final Drawable drawable) {
 
         if (drawable instanceof BitmapDrawable) {
             return ((BitmapDrawable) drawable).getBitmap();
@@ -135,8 +134,7 @@ public class BitmapUtils {
      * @param filePath the path of the file to be saved
      * @return file saved from the bitmap
      */
-    public static File bitmapToFile(Bitmap bitmap, String filePath) {
-        if (bitmap == null) return null;
+    public static File bitmapToFile(@NonNull final Bitmap bitmap, String filePath) {
 
         FileOutputStream fos = null;
         File file;
@@ -179,8 +177,7 @@ public class BitmapUtils {
      * @param view the view to be converted
      * @return bitmap converted from the view
      */
-    public static Bitmap viewToBitmap(View view) {
-        if (view == null) return null;
+    public static Bitmap viewToBitmap(@NonNull final View view) {
 
         view.setDrawingCacheEnabled(true);
         view.buildDrawingCache();

@@ -1,13 +1,14 @@
 package com.charmingwong.deegoutils;
 
 /**
- * Project：Feedback
- * Class：
- * Builder：xiangzhong
- * Builder Time：16-1-26
- * Modifier：xiangzhong
- * Modify Time：16-1-26
- * Modify mark：
+ * <pre>
+ *     author: Charming Wong
+ *     github: https://github.com/CharmingW
+ *     blog  : http://www.jianshu.com/u/05686c7c92af & http://blog.csdn.net/CharmingWong
+ *     公众号 ： Charming写字的地方
+ *     time  : 2017/09/12
+ *     desc  : Object相关工具类
+ * </pre>
  */
 
 public class ObjectUtils {

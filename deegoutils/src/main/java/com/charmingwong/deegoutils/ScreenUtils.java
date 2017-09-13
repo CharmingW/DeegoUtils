@@ -4,12 +4,20 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Rect;
+import android.support.annotation.NonNull;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.WindowManager;
 
 /**
- *
+ * <pre>
+ *     author: Charming Wong
+ *     github: https://github.com/CharmingW
+ *     blog  : http://www.jianshu.com/u/05686c7c92af & http://blog.csdn.net/CharmingWong
+ *     公众号 ： Charming写字的地方
+ *     time  : 2017/09/12
+ *     desc  : Screen相关工具类
+ * </pre>
  */
 public class ScreenUtils {
 
@@ -22,7 +30,7 @@ public class ScreenUtils {
      * @param context Context to get WindowManager and device specific display metrics
      * @return screen width with a int width value to represent px equivalent to dp depending on device density
      */
-    public static int getScreenWidth(Context context) {
+    public static int getScreenWidth(@NonNull final Context context) {
         WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         DisplayMetrics outMetrics = new DisplayMetrics();
         wm.getDefaultDisplay().getMetrics(outMetrics);
@@ -33,7 +41,7 @@ public class ScreenUtils {
      * @param context Context to get WindowManager and device specific display metrics
      * @return screen height with a int value to represent px equivalent to dp depending on device density
      */
-    public static int getScreenHeight(Context context) {
+    public static int getScreenHeight(@NonNull final Context context) {
         WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         DisplayMetrics outMetrics = new DisplayMetrics();
         wm.getDefaultDisplay().getMetrics(outMetrics);
@@ -44,7 +52,7 @@ public class ScreenUtils {
      * @param context Context to get resources and dimension
      * @return status height with a int value to represent px equivalent to dp depending on device density
      */
-    public static int getStatusHeight(Context context) {
+    public static int getStatusHeight(@NonNull final Context context) {
         int statusHeight = -1;
         try {
             Class<?> clazz = Class.forName("com.android.internal.R$dimen");
@@ -63,7 +71,7 @@ public class ScreenUtils {
      * @param activity 需要截取快照的 activity
      * @return bitmap 形式的快照
      */
-    public static Bitmap snapShotWithStatusBar(Activity activity) {
+    public static Bitmap snapShotWithStatusBar(@NonNull final Activity activity) {
         View view = activity.getWindow().getDecorView();
         view.setDrawingCacheEnabled(true);
         view.buildDrawingCache();
@@ -83,7 +91,7 @@ public class ScreenUtils {
      * @param activity Activity to get
      * @return
      */
-    public static Bitmap snapShotWithoutStatusBar(Activity activity) {
+    public static Bitmap snapShotWithoutStatusBar(@NonNull final Activity activity) {
         View view = activity.getWindow().getDecorView();
         view.setDrawingCacheEnabled(true);
         view.buildDrawingCache();
@@ -109,7 +117,7 @@ public class ScreenUtils {
      * @param px A value in px (pixels) unit. Which we need to convert into db
      * @return A float value to represent dp equivalent to px value
      */
-    public static float pxToDp(final Context context, final float px) {
+    public static float pxToDp(@NonNull final Context context, final float px) {
         return px / context.getResources().getDisplayMetrics().density;
     }
 
@@ -120,7 +128,7 @@ public class ScreenUtils {
      * @param dp A value in dp (density independent pixels) unit. Which we need to convert into pixels
      * @return A float value to represent px equivalent to dp depending on device density
      */
-    public static float dpToPx(final Context context, final float dp) {
+    public static float dpToPx(@NonNull final Context context, final float dp) {
         return dp * context.getResources().getDisplayMetrics().density;
     }
 
