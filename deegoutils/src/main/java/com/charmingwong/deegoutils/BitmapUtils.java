@@ -32,6 +32,8 @@ public class BitmapUtils {
     }
 
     /**
+     * 将Bitmap转换成字节数据
+     *
      * @param bitmap The bitmap to be converted
      * @return byte array converted from the bitmap
      */
@@ -56,6 +58,8 @@ public class BitmapUtils {
     }
 
     /**
+     * 将字节数据转换成Bitmap
+     *
      * @param bytes this byte array to be converted
      * @return bitmap converted from the byte array
      */
@@ -65,6 +69,8 @@ public class BitmapUtils {
     }
 
     /**
+     * 将Bitmap编码成base64字符串
+     *
      * @param bitmap The bitmap to be converted
      * @return string encoded with Base64 from the bitmap
      */
@@ -80,6 +86,8 @@ public class BitmapUtils {
     }
 
     /**
+     * 将base64字符串译码成Bitmap
+     *
      * @param base64String the Base64 string to be converted
      * @return bitmap decoded with Base64 from string
      */
@@ -90,6 +98,8 @@ public class BitmapUtils {
     }
 
     /**
+     * 将Bitmap转换成Drawable
+     *
      * @param bitmap The bitmap to be converted
      * @return drawable converted from the bitmap
      */
@@ -99,6 +109,8 @@ public class BitmapUtils {
     }
 
     /**
+     * 将Drawable转换成Bitmap
+     *
      * @param drawable the drawable to be converted
      * @return bitmap converted from the drawable
      */
@@ -130,6 +142,8 @@ public class BitmapUtils {
     }
 
     /**
+     * 将Bitmap保存到文件中
+     *
      * @param bitmap   The bitmap to be converted
      * @param filePath the path of the file to be saved
      * @return file saved from the bitmap
@@ -174,6 +188,8 @@ public class BitmapUtils {
 //    public static Bitmap fileToBitmap
 
     /**
+     * 将view呈现的视图转换为Bitmap图像
+     *
      * @param view the view to be converted
      * @return bitmap converted from the view
      */
@@ -183,4 +199,31 @@ public class BitmapUtils {
         view.buildDrawingCache();
         return view.getDrawingCache();
     }
+
+    /**
+     * 根据图片的宽高和ImageView的宽高信息，计算出合适的inSampleSize
+     *
+     * @param options BitmapFactory decode bitmap传入的options
+     * @param reqWidth ImageView的width
+     * @param reqHeight ImageView的height
+     * @return 合适的options.inSampleSize
+     */
+    public static int calculateInSampleSize(BitmapFactory.Options options,
+        int reqWidth, int reqHeight) {
+        // 源图片的高度和宽度
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+        int inSampleSize = 1;
+        if (height > reqHeight || width > reqWidth) {
+            // 计算出实际宽高和目标宽高的比率
+            final int heightRatio = Math.round((float) height / (float) reqHeight);
+            final int widthRatio = Math.round((float) width / (float) reqWidth);
+            // 选择宽和高中最小的比率作为inSampleSize的值，这样可以保证最终图片的宽和高
+            // 一定都会大于等于目标的宽和高。
+            inSampleSize = heightRatio < widthRatio ? heightRatio : widthRatio;
+        }
+        return inSampleSize;
+    }
 }
+
+

@@ -98,12 +98,14 @@ public class ImageUtils {
      */
     public static String getImageUrlSuffix(@NonNull final String url) {
 
-        if (url.endsWith(".jpg")
-            || url.endsWith("jpeg")
-            || url.endsWith("png")
-            || url.endsWith("gif")
-            || url.endsWith("webp")) {
-            return url.substring(url.lastIndexOf('.'), url.length());
+        String newUrl  = url.toLowerCase();
+
+        if (newUrl.endsWith(".jpg")
+            || newUrl.endsWith("jpeg")
+            || newUrl.endsWith("png")
+            || newUrl.endsWith("gif")
+            || newUrl.endsWith("webp")) {
+            return newUrl.substring(newUrl.lastIndexOf('.'), newUrl.length());
         }
         return "";
     }
