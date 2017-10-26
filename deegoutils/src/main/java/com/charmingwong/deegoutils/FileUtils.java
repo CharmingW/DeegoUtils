@@ -57,7 +57,7 @@ public class FileUtils {
     }
 
     /**
-     *
+     * 创建文件
      *
      * @param file 文件对象
      * @return boolean 是否创建成功
@@ -74,6 +74,50 @@ public class FileUtils {
             }
         }
         return false;
+    }
+
+    /**
+     * 获取文件大小
+     *
+     * @param filePath 文件路径
+     * @return 文件大小
+     */
+    public static long getFileSize(String filePath) {
+        if (filePath.isEmpty()) {
+            return 0;
+        }
+        File file = new File(filePath);
+        return getFileSize(file);
+    }
+
+    /**
+     * 获取文件大小
+     *
+     * @param file 文件对象
+     * @return 文件大小
+     */
+    public static long getFileSize(File file) {
+        if (file == null || !file.exists()) {
+            return 0;
+        }
+
+        if (file.isFile()) { //若是文件，则返回文件大小
+            return file.length();
+        } else { //若是目录，则继续遍历
+            File[] files = file.listFiles();
+            if (files == null) {
+                return 0;
+            }
+
+            //父目录大小
+            long size = file.length();
+
+            //遍历父目录下的文件或文件夹
+            for (File childFile : files) {
+                size += getFileSize(childFile);
+            }
+            return size;
+        }
     }
 
 }
